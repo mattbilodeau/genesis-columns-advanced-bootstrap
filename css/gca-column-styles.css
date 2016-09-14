@@ -1,0 +1,40 @@
+/**
+ * The builtin column class CSS file for Genesis Columns Advanced. 
+ * This file can be disabled using the gca_load_column_styles filter.
+ *
+ * Width: 100%
+ * Gutter: 2.5641025641%
+ * Link: http://www.nickdiego.com/plugins/genesis-columns-advanced/
+ ----------------------------------------------------------------------------- */
+
+
+/* Column Classes
+--------------------------------------------- */
+.first {
+	clear: both;
+	margin-left: 0;
+}
+
+/* Utility Classes
+--------------------------------------------- */
+
+.clearfix:before {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+	content: " ";
+	display: table;
+}
+
+.vertical-spacer {
+	clear: both;
+	margin-bottom: 30px;
+}
+
+.columns-container {
+	clear: both;
+	overflow: hidden;
+}
