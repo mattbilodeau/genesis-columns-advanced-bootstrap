@@ -2,6 +2,7 @@
 based on Genesis Columns Advanced
 	modified to provide bootstrap classes for Genesis Columns shortcodes
 
+modified to make a site content based in a genesis columns advanced theme to use bootstrap codes.
 
 
 === Genesis Columns Advanced ===
