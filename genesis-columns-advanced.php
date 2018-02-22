@@ -215,7 +215,7 @@ class Genesis_Columns_Advanced {
 			'five-sixths' 		=> array( 'type' => 'column', 'class' => 'col-10'  ),
 			'row'			=> array( 'type' => 'column', 'class' => 'row'),
 
-			'clearfix' 		=> array( 'type' => 'br', 'class' => 'clearfix' ),
+			'clearfix' 		=> array( 'type' => 'column', 'class' => 'w-100' ),
 			'vertical-spacer' 	=> array( 'type' => 'utility' ),
 			'columns-container' 	=> array( 'type' => 'utility' ),
 		));
