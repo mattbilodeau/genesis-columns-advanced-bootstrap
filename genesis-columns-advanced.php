@@ -197,6 +197,7 @@ class Genesis_Columns_Advanced {
 
 		// define shortcodes
 		$shortcodes = apply_filters( 'NEED_shortcodes', array(
+			'one'			=> array( 'type' => 'column', 'class' => 'col-12' ),
 			'one-half' 		=> array( 'type' => 'column', 'class' => 'col-6' ),
 			'one-third' 		=> array( 'type' => 'column', 'class' => 'col-4'  ),
 			'two-thirds' 		=> array( 'type' => 'column', 'class' => 'col-8'  ),
@@ -214,9 +215,9 @@ class Genesis_Columns_Advanced {
 			'five-sixths' 		=> array( 'type' => 'column', 'class' => 'col-10'  ),
 			'row'			=> array( 'type' => 'column', 'class' => 'row'),
 
-			'clearfix' 			=> array( 'type' => 'br', 'class' => 'clearfix' ),
+			'clearfix' 		=> array( 'type' => 'br', 'class' => 'clearfix' ),
 			'vertical-spacer' 	=> array( 'type' => 'utility' ),
-			'columns-container' => array( 'type' => 'utility' ),
+			'columns-container' 	=> array( 'type' => 'utility' ),
 		));
 
 		if ( ! $shortcodes ) {
@@ -245,10 +246,11 @@ class Genesis_Columns_Advanced {
 			if ( $atts['type'] == 'column' ) {
 
 				$all_shortcodes[$shortcode . '-first'] =	array(
-					'class'	=> $atts['class'] . ' order-first',
+					'class'	=> $atts['class'],
 					'type'	=> $atts['type']
 				);
 			}
+
 		}
 
 		return $all_shortcodes;
@@ -270,11 +272,15 @@ class Genesis_Columns_Advanced {
 		$type  = $all_shortcodes[$name]['type'];
 
 		// Setup the markup and identifier (both filterable)
-		$markup     = ( $type == 'utility' ) ? apply_filters( 'gca_utility_markup', 'div' ) : apply_filters( 'gca_column_markup', 'div' );
-		//$identifier = ( $type == 'utility' ) ? apply_filters( 'gca_utility_identifier_class', 'gca-utility' ) : apply_filters( 'gca_column_identifier_class', 'gca-column' );
-		
-		if ($type == "br") {
-			$markup     = ( $type == 'br' ) ? apply_filters( 'gca_uility_markup', 'br' ) : apply_filters( 'gca_column_markup', 'br' );	
+		switch ($type) {
+			case 'utility':
+				$markup = apply_filters( 'gca_utility_markup', 'div' );
+
+			case 'br':
+				$markup = apply_filters('gca_utility_markup', 'br' );
+
+			default:
+				$markup = apply_filters( 'gca_column_markup', 'div' );
 		}
 
 		// Setup the id
@@ -282,10 +288,10 @@ class Genesis_Columns_Advanced {
 		$id = ( $id != '' ) ? ' id="' . $id . '"' : '';
 
 		// Setup the classes
-		$class         = ' ' . $all_shortcodes[$name]['class'];
+		$class         = $all_shortcodes[$name]['class'];
 		$extra_classes = sanitize_text_field( $atts['class'] );
 		$extra_classes = ( $extra_classes != '' ) ? ' ' . $extra_classes : '';
-		$class         = ' class="' . $identifier . $class . $extra_classes . '"';
+		$class         = ' class="' . $class . $extra_classes . '"';
 
 		// Setup the styles
 		$style = sanitize_text_field( $atts['style'] );
