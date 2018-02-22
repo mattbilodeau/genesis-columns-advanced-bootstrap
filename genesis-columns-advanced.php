@@ -197,23 +197,24 @@ class Genesis_Columns_Advanced {
 
 		// define shortcodes
 		$shortcodes = apply_filters( 'NEED_shortcodes', array(
-			'one-half' 			=> array( 'type' => 'column', 'bs' => 'col-6' ),
-			'one-third' 		=> array( 'type' => 'column', 'bs' => 'col-4'  ),
-			'two-thirds' 		=> array( 'type' => 'column', 'bs' => 'col-8'  ),
-			'one-fourth' 		=> array( 'type' => 'column', 'bs' => 'col-3'  ),
-			'two-fourths' 		=> array( 'type' => 'column', 'bs' => 'col-6'  ),
-			'three-fourths' 	=> array( 'type' => 'column', 'bs' => 'col-9'  ),
-			'one-fifth' 		=> array( 'type' => 'column', 'bs' => 'col-2'  ),
-			'two-fifths' 		=> array( 'type' => 'column', 'bs' => 'col-4'  ),
-			'three-fifths' 		=> array( 'type' => 'column', 'bs' => 'col-6'  ),
-			'four-fifths' 		=> array( 'type' => 'column', 'bs' => 'col-8'  ),
-			'one-sixth' 		=> array( 'type' => 'column', 'bs' => 'col-2'  ),
-			'two-sixths' 		=> array( 'type' => 'column', 'bs' => 'col-4'  ),
-			'three-sixths' 		=> array( 'type' => 'column', 'bs' => 'col-6'  ),
-			'four-sixths' 		=> array( 'type' => 'column', 'bs' => 'col-8'  ),
-			'five-sixths' 		=> array( 'type' => 'column', 'bs' => 'col-10'  ),
+			'one-half' 		=> array( 'type' => 'column', 'class' => 'col-6' ),
+			'one-third' 		=> array( 'type' => 'column', 'class' => 'col-4'  ),
+			'two-thirds' 		=> array( 'type' => 'column', 'class' => 'col-8'  ),
+			'one-fourth' 		=> array( 'type' => 'column', 'class' => 'col-3'  ),
+			'two-fourths' 		=> array( 'type' => 'column', 'class' => 'col-6'  ),
+			'three-fourths' 	=> array( 'type' => 'column', 'class' => 'col-9'  ),
+			'one-fifth' 		=> array( 'type' => 'column', 'class' => 'col-2'  ),
+			'two-fifths' 		=> array( 'type' => 'column', 'class' => 'col-4'  ),
+			'three-fifths' 		=> array( 'type' => 'column', 'class' => 'col-6'  ),
+			'four-fifths' 		=> array( 'type' => 'column', 'class' => 'col-8'  ),
+			'one-sixth' 		=> array( 'type' => 'column', 'class' => 'col-2'  ),
+			'two-sixths' 		=> array( 'type' => 'column', 'class' => 'col-4'  ),
+			'three-sixths' 		=> array( 'type' => 'column', 'class' => 'col-6'  ),
+			'four-sixths' 		=> array( 'type' => 'column', 'class' => 'col-8'  ),
+			'five-sixths' 		=> array( 'type' => 'column', 'class' => 'col-10'  ),
+			'row'			=> array( 'type' => 'column', 'class' => 'row'),
 
-			'clearfix' 			=> array( 'type' => 'utility' ),
+			'clearfix' 			=> array( 'type' => 'br', 'class' => 'clearfix' ),
 			'vertical-spacer' 	=> array( 'type' => 'utility' ),
 			'columns-container' => array( 'type' => 'utility' ),
 		));
@@ -228,16 +229,23 @@ class Genesis_Columns_Advanced {
 			// add prefix
 			//$shortcode = $this->prefix . $short;
 
-			$all_shortcodes[$shortcode] =	array(
-				'class' => $shortcode,
-				'type'	=> $atts['type']
-			);
+			if (isset($atts['class'])) {
+				$all_shortcodes[$shortcode] =	array(
+					'class' => $atts['class'],
+					'type'	=> $atts['type']
+				);
+			} else {
+				$all_shortcodes[$shortcode] =   array(
+                               		'class' => $shortcode,
+                               		 'type'  => $atts['type']
+                        	);
+			}
 
 			// If it's a utlity shortcode, don't add the corresponding first shortcode
 			if ( $atts['type'] == 'column' ) {
 
 				$all_shortcodes[$shortcode . '-first'] =	array(
-					'class'	=> $shortcode . ' first',
+					'class'	=> $atts['class'] . ' order-first',
 					'type'	=> $atts['type']
 				);
 			}
@@ -263,7 +271,7 @@ class Genesis_Columns_Advanced {
 
 		// Setup the markup and identifier (both filterable)
 		$markup     = ( $type == 'utility' ) ? apply_filters( 'gca_utility_markup', 'div' ) : apply_filters( 'gca_column_markup', 'div' );
-		$identifier = ( $type == 'utility' ) ? apply_filters( 'gca_utility_identifier_class', 'gca-utility' ) : apply_filters( 'gca_column_identifier_class', 'gca-column' );
+		//$identifier = ( $type == 'utility' ) ? apply_filters( 'gca_utility_identifier_class', 'gca-utility' ) : apply_filters( 'gca_column_identifier_class', 'gca-column' );
 		
 		if ($type == "br") {
 			$markup     = ( $type == 'br' ) ? apply_filters( 'gca_uility_markup', 'br' ) : apply_filters( 'gca_column_markup', 'br' );	
