@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name: Genesis Columns Advanced
- * Plugin URI: https://www.nickdiego.com/plugins/genesis-columns-advanced
+ * Plugin Name: Genesis Columns Advanced Bootstrap
+ * Plugin URI: https://www.github.com/mattbilodeau/genesis-columns-advanced-bootstrap
  * Description: Adds shortcodes to easily create up to 42 different columned layouts.
  * Version: 2.0.3
- * Author: Nick Diego
- * Author URI: https://www.nickdiego.com
- * Text Domain: genesis-columns-advanced
+ * Author:  Matt Bilodeau
+ * Author URI: https://www.mattbilodeau.com
+ * Text Domain: genesis-columns-advanced-bootstrap
  * License: GPLv2
  *
  * This program is free software: you can redistribute it and/or modify
@@ -197,13 +197,13 @@ class Genesis_Columns_Advanced {
 
 		// define shortcodes
 		$shortcodes = apply_filters( 'NEED_shortcodes', array(
-			'one'			=> array( 'type' => 'column', 'class' => 'col-12' ),
-			'one-half' 		=> array( 'type' => 'column', 'class' => 'col-6' ),
-			'one-third' 		=> array( 'type' => 'column', 'class' => 'col-4'  ),
-			'two-thirds' 		=> array( 'type' => 'column', 'class' => 'col-8'  ),
-			'one-fourth' 		=> array( 'type' => 'column', 'class' => 'col-3'  ),
-			'two-fourths' 		=> array( 'type' => 'column', 'class' => 'col-6'  ),
-			'three-fourths' 	=> array( 'type' => 'column', 'class' => 'col-9'  ),
+			'one'			=> array( 'type' => 'column', 'class' => 'col-md-12' ),
+			'one-half' 		=> array( 'type' => 'column', 'class' => 'col-md-6' ),
+			'one-third' 		=> array( 'type' => 'column', 'class' => 'col-md-4'  ),
+			'two-thirds' 		=> array( 'type' => 'column', 'class' => 'col-md-8'  ),
+			'one-fourth' 		=> array( 'type' => 'column', 'class' => 'col-sm-3'  ),
+			'two-fourths' 		=> array( 'type' => 'column', 'class' => 'col-sm-6'  ),
+			'three-fourths' 	=> array( 'type' => 'column', 'class' => 'col-sm-9'  ),
 			'one-fifth' 		=> array( 'type' => 'column', 'class' => 'col-2'  ),
 			'two-fifths' 		=> array( 'type' => 'column', 'class' => 'col-4'  ),
 			'three-fifths' 		=> array( 'type' => 'column', 'class' => 'col-6'  ),
